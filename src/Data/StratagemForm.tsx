@@ -6,16 +6,25 @@
  *  @todo add indication about the keywords it affects (this might be useful when we have list building)
  */
 
+import { v4 as uuid } from 'uuid';
 import { FormEvent } from "react";
+import useStratagemsList from "../Hooks/useStratagemsList";
+import Stratagem from "../Types/Stratagem";
 import FormRow from "../Widgets/FormRow";
 
 export default function StragagemForm() {
+
+    const { list, push } = useStratagemsList(); 
 
     function handleSubmit(event:FormEvent) : void {
 
         event.preventDefault();
 
+        const data = Object.fromEntries(new FormData(event.target as HTMLFormElement));
 
+        data.id = uuid();
+
+        push(data as unknown as Stratagem);
     };
 
     return (

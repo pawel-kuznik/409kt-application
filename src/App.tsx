@@ -1,17 +1,13 @@
-import { atom, RecoilRoot } from 'recoil';
+import { RecoilRoot } from 'recoil';
 import './App.css';
 import StragagemForm from './Data/StratagemForm';
-import Stratagem from './Types/Stratagem';
-
-export const stratagemsState = atom<Array<Stratagem>>({
-  key: 'stratagemsState',
-  default: []
-});
+import StratagemsList from './Data/StratagemsList';
 
 function App() {
   return (
     <RecoilRoot>
       <div>
+        <StratagemsList/>
         <StragagemForm/>
       </div>
     </RecoilRoot>
