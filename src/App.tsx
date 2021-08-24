@@ -1,12 +1,14 @@
 import { RecoilRoot } from 'recoil';
 import './App.css';
 import StratagemSection from './Data/StratagemsSection';
+import CardsPrint from './Print/CardsPrint';
 
 function App() {
   return (
     <RecoilRoot>
       <div>
         <StratagemSection/>
+        <CardsPrint/>
       </div>
     </RecoilRoot>
   );
