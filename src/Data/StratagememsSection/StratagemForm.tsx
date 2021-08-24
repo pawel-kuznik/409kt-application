@@ -8,14 +8,27 @@
 
 import { v4 as uuid } from 'uuid';
 import { FormEvent } from "react";
-import useStratagemsList from "../Hooks/useStratagemsList";
-import Stratagem from "../Types/Stratagem";
-import FormRow from "../Widgets/FormRow";
+import useStratagemsList from "../../Hooks/useStratagemsList";
+import Stratagem from "../../Types/Stratagem";
+import FormRow from "../../Widgets/FormRow";
 
-export default function StragagemForm() {
+/**
+ *  The properties for the component.
+ */
+export interface StratagemFormProps {
 
-    const { list, push } = useStratagemsList(); 
+    // the stratagem to edit
+    stratagem?:Stratagem;
+};
 
+/**
+ *  The componenet to define a stratagem.
+ */
+export default function StratagemForm(props:StratagemFormProps) {
+
+    const { push } = useStratagemsList(); 
+
+    // an event handler function to handle the submit of the form
     function handleSubmit(event:FormEvent) : void {
 
         event.preventDefault();
