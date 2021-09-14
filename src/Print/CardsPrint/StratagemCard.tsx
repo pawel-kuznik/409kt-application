@@ -7,7 +7,7 @@ export interface StratagemCardProps {
 
 export default function StratagemCard(props:StratagemCardProps) {
     return (
-        <Card>
+        <Card size="poker">
             {props.stratagem.name}
         </Card>
     );

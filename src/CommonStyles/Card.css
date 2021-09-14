@@ -3,3 +3,39 @@
  *  sizes are defined here and not in styled components cause we want to share these styles
  *  between components and "printed" output.
  */
+
+.card
+{
+    font-size:      8pt;
+    border:         1mm solid #ccc;
+    border-radius:  3mm;
+    box-sizing:     border-box;
+}
+
+.cards-landscape .card-stats,
+.card-stats.card-landscape
+{
+    width:  148mm;
+    height: 106mm;
+}
+
+.cards-portrait .card-stats,
+.card-stats.card-portrait
+{
+    width:  106mm;
+    height: 148mm;
+}
+
+.cards-landscape .card-poker,
+.card-poker.cards-landscape
+{
+    width:  88mm;
+    height: 63mm;
+}
+
+.cards-portrait .card-poker,
+.card-poker.cards-portrait
+{
+    width:  63mm;
+    height: 88mm;
+}

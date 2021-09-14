@@ -1,8 +1,9 @@
-import { ReactNode, ReactNodeArray } from "react";
+import { ReactNodeArray } from "react";
 import styled from "styled-components";
+import { Orientation } from "../../Types/Orientation";
 
 export interface PrintPageProps {
-    children:ReactNodeArray;
+    children:ReactNodeArray
 };
 
 const Page = styled.div`
@@ -29,10 +30,10 @@ export default function PrintPage(props:PrintPageProps) {
 
     const items = [...props.children];
 
-    for (let i = items.length; i < 6; i++) items.push((<EmptySpot/>));
+    for (let i = items.length; i < 6; i++) items.push((<EmptySpot className="card"/>));
 
     return (
-        <Page>
+        <Page className="cards-portrait">
             {items}
         </Page>
     );
