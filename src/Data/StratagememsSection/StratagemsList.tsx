@@ -6,11 +6,11 @@ import StratagemItem from "./StratagemItem";
  */
 export default function StratagemsList() {
 
-    const { list, remove } = useStratagemsList();
+    const { list } = useStratagemsList();
 
     return (
         <div>
-            {list.map(s => <StratagemItem key={s.id} stratagem={s} onRemove={() => remove(s)} />)}
+            {list.map(s => <StratagemItem key={s.id} stratagem={s}/>)}
         </div>
     );
 };

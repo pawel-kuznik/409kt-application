@@ -12,7 +12,20 @@ export default function useStratagemsList() {
      */
     const push = useCallback((item:Stratagem) => {
 
-        setList([...list, item]);
+        // are we dealing with an update? then we need to find it and update the data at the point
+        if (item.id) {
+
+            const idx = list.findIndex(s => s.id == item.id);
+            const current = [...list];
+
+            if (idx === -1) current.push(item);
+            else current.splice(idx, 1, item);
+
+            setList(current);
+        }
+        
+        // if we deal with a completely new stratagem then we can just push it to the end.
+        else setList([...list, item]);
 
     }, [ list, setList ]);
 
