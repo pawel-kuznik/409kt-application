@@ -21,11 +21,7 @@ export default function useStratagemsList() {
      */
     const remove = useCallback((item:string|Stratagem) => {
 
-        const idx = typeof(item) === 'string' ? list.findIndex(s => s.id === item) : list.indexOf(item);
-
-        if (idx === undefined || idx < 0) return;
-
-        setList(list.splice(idx, 1));
+        setList(list.filter(typeof(item) === 'string' ? (s => s.id !== item) : (s => s !== item)));
     }, [ list, setList ]);
 
     // remove the list + helper functions
