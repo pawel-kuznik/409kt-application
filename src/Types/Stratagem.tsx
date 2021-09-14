@@ -18,6 +18,8 @@ export default interface Stratagem {
     id:string;
     name:string;
     cost:string;
+    faction:string;
+    type:string;
     fluff:string;
     rules:string;
 };

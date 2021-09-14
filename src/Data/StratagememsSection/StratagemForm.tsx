@@ -46,7 +46,13 @@ export default function StratagemForm(props:StratagemFormProps) {
                 <input type="text" name="name"/>
             </FormRow>
             <FormRow label="cost">
-                <input type="text" name="cost"/>
+                <input type="text" name="cost"  list="suggestions-stratagem-cost"/>
+            </FormRow>
+            <FormRow label="faction">
+                <input type="text" name="faction" list="suggestions-factions"/>
+            </FormRow>
+            <FormRow label="type">
+                <input type="text" name="type" list="suggestions-stratagem-type"/>
             </FormRow>
             <FormRow label="fluff">
                 <textarea name="fluff"/>
