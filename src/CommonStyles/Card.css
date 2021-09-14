@@ -1,0 +1,5 @@
+/**
+ *  This a file containing classes that we use to define sizes of different cards. These
+ *  sizes are defined here and not in styled components cause we want to share these styles
+ *  between components and "printed" output.
+ */

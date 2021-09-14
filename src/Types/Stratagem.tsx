@@ -12,7 +12,7 @@ export const stratagemState = atom<Stratagem[]>({
 });
 
 /**
- *  A type of 
+ *  An interface describing a Stratagem data. 
  */
 export default interface Stratagem {
     id:string;
