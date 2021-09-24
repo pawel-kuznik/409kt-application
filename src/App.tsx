@@ -1,6 +1,7 @@
 import { RecoilRoot } from 'recoil';
 import './App.css';
 import './CommonStyles/Card.css';
+import './CommonProperties/Color.css';
 import StratagemSection from './Data/StratagemsSection';
 import CardsPrint from './Print/CardsPrint';
 

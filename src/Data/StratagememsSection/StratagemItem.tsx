@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 import useStratagemsList from "../../Hooks/useStratagemsList";
 import Stratagem from "../../Types/Stratagem";
+import ListItem from "../../Widgets/ListItem";
 import { selectedStratagem } from "../StratagemsSection";
 
 // properties for the component
@@ -21,10 +22,8 @@ export default function StratagemItem(props:StratagemItemProps) {
     // @todo handle selected state
 
     return (
-        <div>
+        <ListItem onEdit={() => setSelected(props.stratagem)} onDelete={() => remove(props.stratagem)}>
             {props.stratagem.name}
-            <button onClick={() => setSelected(props.stratagem)}>Edit</button>
-            <button onClick={() => remove(props.stratagem)}>Remove</button>
-        </div>
+        </ListItem>
     );
 };

@@ -15,7 +15,7 @@ export default function useStratagemsList() {
         // are we dealing with an update? then we need to find it and update the data at the point
         if (item.id) {
 
-            const idx = list.findIndex(s => s.id == item.id);
+            const idx = list.findIndex(s => s.id === item.id);
             const current = [...list];
 
             if (idx === -1) current.push(item);

@@ -1,6 +1,5 @@
 import { ReactNodeArray } from "react";
 import styled from "styled-components";
-import { Orientation } from "../../Types/Orientation";
 
 export interface PrintPageProps {
     children:ReactNodeArray
