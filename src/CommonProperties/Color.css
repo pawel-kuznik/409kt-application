@@ -1,4 +1,5 @@
 :root
 {
     --color-blending-medium:    rgba(140, 140, 140, .25);
+    --color-blending-selected:  rgba(140, 140, 240, .25);
 }

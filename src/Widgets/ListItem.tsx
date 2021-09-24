@@ -28,6 +28,11 @@ const ListItemFrame = styled.div`
     background:     var(--color-blending-medium);
     padding:        .5em;
 
+    &.selected
+    {
+        background:     var(--color-blending-selected);
+    }
+
     & > aside
     {
         float:          right;
@@ -44,7 +49,10 @@ const ListItemFrame = styled.div`
 
 export default function ListItem(props:ListItemProps) {
 
-    return (<ListItemFrame>
+    const css = [ ];
+    if (props.selected) css.push('selected');
+
+    return (<ListItemFrame className={css.join(' ')}>
         {props.children}
         <aside>
             {props.onEdit && (<button onClick={props.onEdit}>Edit</button>)}

@@ -22,7 +22,7 @@ export default function StratagemItem(props:StratagemItemProps) {
     // @todo handle selected state
 
     return (
-        <ListItem onEdit={() => setSelected(props.stratagem)} onDelete={() => remove(props.stratagem)}>
+        <ListItem onEdit={() => setSelected(props.stratagem)} onDelete={() => remove(props.stratagem)} selected={selected?.id == props.stratagem.id}>
             {props.stratagem.name}
         </ListItem>
     );
