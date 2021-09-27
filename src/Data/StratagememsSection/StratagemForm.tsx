@@ -11,8 +11,6 @@ import { FormEvent } from "react";
 import useStratagemsList from "../../Hooks/useStratagemsList";
 import Stratagem from "../../Types/Stratagem";
 import FormRow from "../../Widgets/FormRow";
-import { selectedStratagem } from "../StratagemsSection";
-import { useRecoilState } from 'recoil';
 
 /**
  *  The properties for the component.
@@ -20,7 +18,13 @@ import { useRecoilState } from 'recoil';
 export interface StratagemFormProps {
 
     // the stratagem to edit
-    stratagem?:Stratagem;
+    stratagem?:Stratagem|null;
+
+    // the callback called when form submits
+    onSubmit?:() => void;
+
+    // the cancel callback
+    onCancel?:() => void;
 };
 
 /**
@@ -28,9 +32,7 @@ export interface StratagemFormProps {
  */
 export default function StratagemForm(props:StratagemFormProps) {
 
-    const { push } = useStratagemsList(); 
-
-    const [ selected, setSelected ] = useRecoilState<Stratagem|null>(selectedStratagem);
+    const { push, remove } = useStratagemsList(); 
 
     // an event handler function to handle the submit of the form
     function handleSubmit(event:FormEvent) : void {
@@ -43,32 +45,41 @@ export default function StratagemForm(props:StratagemFormProps) {
 
         push(data as unknown as Stratagem);
 
-        setSelected(null);
+        if (props.onSubmit) props.onSubmit();
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="hidden" name="id" defaultValue={selected ? selected.id : ''}/>
+            <input type="hidden" name="id" defaultValue={props.stratagem?.id || ''}/>
             <FormRow label="name">
-                <input type="text" name="name" defaultValue={selected ? selected.name : ''}/>
+                <input type="text" name="name" defaultValue={props.stratagem?.id || ''}/>
             </FormRow>
             <FormRow label="cost">
-                <input type="text" name="cost"  list="suggestions-stratagem-cost" defaultValue={selected ? selected.cost : ''}/>
+                <input type="text" name="cost"  list="suggestions-stratagem-cost" defaultValue={props.stratagem?.cost || ''}/>
             </FormRow>
             <FormRow label="faction">
-                <input type="text" name="faction" list="suggestions-factions" defaultValue={selected ? selected.faction : ''}/>
+                <input type="text" name="faction" list="suggestions-factions" defaultValue={props.stratagem?.faction || ''}/>
             </FormRow>
             <FormRow label="type">
-                <input type="text" name="type" list="suggestions-stratagem-type" defaultValue={selected ? selected.type : ''}/>
+                <input type="text" name="type" list="suggestions-stratagem-type" defaultValue={props.stratagem?.type || ''}/>
             </FormRow>
             <FormRow label="fluff">
-                <textarea name="fluff" defaultValue={selected ? selected.fluff : ''}/>
+                <textarea name="fluff" defaultValue={props.stratagem?.fluff || ''}/>
             </FormRow>
             <FormRow label="rules">
-                <textarea name="rules" defaultValue={selected ? selected.rules : ''}/>
+                <textarea name="rules" defaultValue={props.stratagem?.rules || ''}/>
             </FormRow>
             <div>
                 <button type="submit">Save</button>
+                {props.stratagem?.id && <button type="button" onClick={() => { 
+                    
+                    if (!props.stratagem) return;
+
+                    remove(props.stratagem.id);
+
+                    if (props.onSubmit) props.onSubmit();
+                }}>Remove</button> }
+                {props.onCancel && <button type="button" onClick={props.onCancel}>Cancel</button>} 
             </div>
         </form>
     );

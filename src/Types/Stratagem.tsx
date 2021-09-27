@@ -12,7 +12,9 @@ export const stratagemState = atom<Stratagem[]>({
 });
 
 /**
- *  An interface describing a Stratagem data. 
+ *  An interface describing a Stratagem data. Stratagems are special abilities
+ *  that each faction has + some general use ones. Player has to play a cost
+ *  in CP to make an effect in the game.
  */
 export default interface Stratagem {
     id:string;

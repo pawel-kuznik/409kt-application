@@ -21,7 +21,10 @@ function App() {
       </datalist>
       <datalist id="suggestions-stratagem-cost">
         <option value="1CP"/>
+        <option value="1CP/2CP"/>
+        <option value="1CP/3CP"/>
         <option value="2CP"/>
+        <option value="2CP/3CP"/>
         <option value="3CP"/>
       </datalist>
       <div>

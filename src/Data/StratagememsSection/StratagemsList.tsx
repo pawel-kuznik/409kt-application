@@ -1,4 +1,5 @@
 import useStratagemsList from "../../Hooks/useStratagemsList";
+import NewStratagem from "./NewStratagem";
 import StratagemItem from "./StratagemItem";
 
 /**
@@ -10,6 +11,7 @@ export default function StratagemsList() {
 
     return (
         <div>
+            <NewStratagem/>
             {list.map(s => <StratagemItem key={s.id} stratagem={s}/>)}
         </div>
     );

@@ -1,8 +1,9 @@
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import useStratagemsList from "../../Hooks/useStratagemsList";
 import Stratagem from "../../Types/Stratagem";
 import ListItem from "../../Widgets/ListItem";
-import { selectedStratagem } from "../StratagemsSection";
+import StratagemForm from "./StratagemForm";
 
 // properties for the component
 export interface StratagemItemProps {
@@ -17,13 +18,16 @@ export interface StratagemItemProps {
 export default function StratagemItem(props:StratagemItemProps) {
 
     const { remove } = useStratagemsList();
-    const [ selected, setSelected ] = useRecoilState<Stratagem|null>(selectedStratagem);
-
-    // @todo handle selected state
+    const [ toEdit, setToEdit ] = useState<Stratagem|null>(null);
 
     return (
-        <ListItem onEdit={() => setSelected(props.stratagem)} onDelete={() => remove(props.stratagem)} selected={selected?.id == props.stratagem.id}>
-            {props.stratagem.name}
-        </ListItem>
+        <React.Fragment>
+            {!toEdit && 
+                <ListItem onEdit={() => void setToEdit(props.stratagem) } onDelete={() => remove(props.stratagem)}>
+                    {props.stratagem.name}
+                </ListItem>
+            }
+            {!!toEdit && <StratagemForm stratagem={toEdit} onSubmit={() => void setToEdit(null) } onCancel={() => void setToEdit(null) } />}
+        </React.Fragment>
     );
 };
